@@ -97,23 +97,21 @@ int free_ocs(void *_del)
 int main()
 {
   int i, ret;
-  h **structs = malloc(sizeof(h *)*10);
+  h *structs = malloc(sizeof(h)*10);
 
   for(i = 0; i < 10; i++)
   {
-    structs[i] = malloc(sizeof(h));
-    strcpy((structs[i])->name, i % 2 ? "ocs" : "cs");
-    (structs[i])->init = i % 2 ? init_ocs : init_cs;
-    (structs[i])->free = i % 2 ? free_ocs : free_cs;
-    (structs[i])->v = ((structs[i])->init)();
-    printf("struct %d is a %s.\n", i, (structs[i])->name);
+    strcpy(structs[i].name, i % 2 ? "ocs" : "cs");
+    structs[i].init = i % 2 ? init_ocs : init_cs;
+    structs[i].free = i % 2 ? free_ocs : free_cs;
+    structs[i].v = (structs[i].init)();
+    printf("struct %d is a %s.\n", i, structs[i].name);
   }
 
   for(i = 0; i < 10; i++)
   {
-    ret = ((structs[i])->free)((structs[i])->v);
-    printf("struct %d returned %d on free. type: %s.\n", i, ret, (structs[i])->name);
-    free(structs[i]);
+    ret = (structs[i].free)(structs[i].v);
+    printf("struct %d returned %d on free. type: %s.\n", i, ret, structs[i].name);
   }
 
   free(structs);
