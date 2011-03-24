@@ -12,6 +12,6 @@ The test for fitness was that valgrind would run it with no errors and tell me t
 
 ## Thanks for reading!
 
-Wyatt Carss is a silly programmer
-He's 22ish and lives in Guelph, Ontario
-you can find him at wcarss.ca
+Wyatt Carss is a silly programmer  
+He's 22ish and lives in Guelph, Ontario  
+you can find him at wcarss.ca  
